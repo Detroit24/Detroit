@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <linearGradient id="pengajianBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1B1713"/>
+      <stop offset="100%" stop-color="#0E0B08"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" rx="12" fill="url(#pengajianBg)"/>
+  <!-- Gold Floral Islamic Frame -->
+  <rect x="15" y="15" width="170" height="250" rx="8" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <path d="M100 25 C130 50 170 50 170 80 H30 C30 50 70 50 100 25 Z" fill="none" stroke="#C5A059" stroke-width="1"/>
+  <circle cx="100" cy="50" r="10" fill="#D4AF37" opacity="0.6"/>
+  <!-- Text -->
+  <text x="100" y="115" text-anchor="middle" font-family="'Playfair Display', serif" font-size="17" font-weight="700" fill="#F4E0A5">Undangan</text>
+  <text x="100" y="142" text-anchor="middle" font-family="'Playfair Display', serif" font-size="20" font-weight="700" fill="#D4AF37">Pengajian</text>
+  <line x1="60" y1="160" x2="140" y2="160" stroke="#8C7A6B" stroke-width="1"/>
+  <!-- Button -->
+  <rect x="55" y="195" width="90" height="24" rx="12" fill="#C5A059"/>
+  <text x="100" y="211" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#1B1713">Buka Undangan</text>
+</svg>

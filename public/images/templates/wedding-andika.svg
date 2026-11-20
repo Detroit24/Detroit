@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <linearGradient id="andikaBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCF9F5"/>
+      <stop offset="100%" stop-color="#F3ECE1"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" rx="12" fill="url(#andikaBg)"/>
+  <!-- Arch Frame -->
+  <path d="M22 260 V80 C22 25 178 25 178 80 V260" fill="none" stroke="#C5A059" stroke-width="1.5"/>
+  <!-- Floral wreath top -->
+  <circle cx="100" cy="50" r="18" fill="#E8D5BE" opacity="0.6"/>
+  <circle cx="100" cy="50" r="9" fill="#B8860B"/>
+  <!-- Title -->
+  <text x="100" y="98" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="14" fill="#8C7A6B" font-style="italic">The Wedding Of</text>
+  <text x="100" y="125" text-anchor="middle" font-family="'Playfair Display', serif" font-size="18" font-weight="700" fill="#2C241E">Andika</text>
+  <text x="100" y="145" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="15" fill="#B8860B">&amp;</text>
+  <text x="100" y="170" text-anchor="middle" font-family="'Playfair Display', serif" font-size="18" font-weight="700" fill="#2C241E">Salsabila</text>
+  <text x="100" y="195" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#75675C">14 DESEMBER 2024</text>
+  <!-- Mini Button -->
+  <rect x="55" y="215" width="90" height="24" rx="12" fill="#B8860B"/>
+  <text x="100" y="231" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF">Buka Undangan</text>
+</svg>

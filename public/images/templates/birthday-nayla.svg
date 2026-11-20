@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <linearGradient id="bdayBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8EC"/>
+      <stop offset="100%" stop-color="#FCE0D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" rx="12" fill="url(#bdayBg)"/>
+  <!-- Balloons top -->
+  <circle cx="50" cy="50" r="22" fill="#FFB4C2" opacity="0.8"/>
+  <circle cx="90" cy="40" r="26" fill="#FAD074" opacity="0.8"/>
+  <circle cx="130" cy="45" r="24" fill="#B3D9FF" opacity="0.8"/>
+  <circle cx="160" cy="58" r="18" fill="#E5C7F5" opacity="0.8"/>
+  <!-- Text -->
+  <text x="100" y="105" text-anchor="middle" font-family="'Playfair Display', cursive" font-size="15" fill="#D85A7F" font-style="italic">Happy</text>
+  <text x="100" y="130" text-anchor="middle" font-family="'Playfair Display', serif" font-size="21" font-weight="700" fill="#BF360C">Birthday</text>
+  <text x="100" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#2E282A">Nayla</text>
+  <text x="100" y="168" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#75675C">Turning 8</text>
+  <!-- Button -->
+  <rect x="55" y="190" width="90" height="24" rx="12" fill="#D85A7F"/>
+  <text x="100" y="206" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF">Buka Undangan</text>
+</svg>

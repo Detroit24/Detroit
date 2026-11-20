@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 340" width="240" height="340">
+  <defs>
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <!-- Card Background -->
+  <rect x="10" y="10" width="220" height="320" rx="16" fill="#FAF6F0" stroke="#EAE0D5" stroke-width="1.5" filter="url(#cardShadow)"/>
+  
+  <!-- Couple Illustration / Photo Area -->
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="180" height="190" rx="12" fill="#EFE8DE"/>
+    <!-- Arch Window Shape -->
+    <path d="M10 180 V70 C10 25 170 25 170 70 V180 Z" fill="#E2D7C7" opacity="0.7"/>
+    <!-- Couple Silhouette -->
+    <!-- Groom -->
+    <ellipse cx="70" cy="85" rx="14" ry="18" fill="#4A443E"/>
+    <path d="M50 180 L55 110 C58 102 82 102 85 110 L90 180 Z" fill="#4A443E"/>
+    <!-- Bride -->
+    <ellipse cx="110" cy="90" rx="13" ry="16" fill="#FFFFFF"/>
+    <!-- Hijab / Veil -->
+    <path d="M92 90 C92 70 128 70 128 90 C128 115 135 150 135 180 H88 C88 150 92 115 92 90 Z" fill="#FBF8F5" stroke="#E6DACD" stroke-width="1"/>
+    <!-- Flower Bouquet in Bride's hand -->
+    <circle cx="88" cy="140" r="8" fill="#E0B589"/>
+    <circle cx="94" cy="136" r="6" fill="#FFF"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="120" y="245" text-anchor="middle" font-family="'Great Vibes', 'Playfair Display', cursive" font-size="24" fill="#B8860B">Terima Kasih</text>
+  <text x="120" y="270" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="500" fill="#75675C">Atas kehadiran dan doa restunya</text>
+  
+  <path d="M120 292 C120 292 113 285 109 288 C105 291 106 296 109 299 L120 307 L131 299 C134 296 135 291 131 288 C127 285 120 292 120 292 Z" fill="#B8860B" opacity="0.8"/>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" width="260" height="260">
+  <rect width="260" height="260" rx="16" fill="#FFFFFF" stroke="#E2D7C7" stroke-width="2"/>
+  <!-- QR header -->
+  <text x="130" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#BF212F">QRIS</text>
+  <text x="130" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#666">STANDAR PEMBAYARAN NASIONAL</text>
+  <!-- QR Pattern Grid -->
+  <g transform="translate(30, 58)">
+    <!-- Corner Finder Patterns -->
+    <rect x="0" y="0" width="48" height="48" fill="#111"/>
+    <rect x="8" y="8" width="32" height="32" fill="#FFF"/>
+    <rect x="16" y="16" width="16" height="16" fill="#111"/>
+
+    <rect x="152" y="0" width="48" height="48" fill="#111"/>
+    <rect x="160" y="8" width="32" height="32" fill="#FFF"/>
+    <rect x="168" y="16" width="16" height="16" fill="#111"/>
+
+    <rect x="0" y="142" width="48" height="48" fill="#111"/>
+    <rect x="8" y="150" width="32" height="32" fill="#FFF"/>
+    <rect x="16" y="158" width="16" height="16" fill="#111"/>
+
+    <!-- Random QR cells -->
+    <rect x="60" y="10" width="14" height="14" fill="#111"/>
+    <rect x="80" y="10" width="14" height="14" fill="#111"/>
+    <rect x="120" y="10" width="14" height="14" fill="#111"/>
+    <rect x="60" y="35" width="14" height="14" fill="#111"/>
+    <rect x="100" y="35" width="14" height="14" fill="#111"/>
+    <rect x="130" y="35" width="14" height="14" fill="#111"/>
+    <rect x="10" y="60" width="14" height="14" fill="#111"/>
+    <rect x="35" y="60" width="14" height="14" fill="#111"/>
+    <rect x="60" y="60" width="14" height="14" fill="#111"/>
+    <rect x="80" y="60" width="14" height="14" fill="#111"/>
+    <rect x="105" y="60" width="14" height="14" fill="#111"/>
+    <rect x="135" y="60" width="14" height="14" fill="#111"/>
+    <rect x="165" y="60" width="14" height="14" fill="#111"/>
+
+    <rect x="25" y="85" width="14" height="14" fill="#111"/>
+    <rect x="50" y="85" width="14" height="14" fill="#111"/>
+    <rect x="75" y="85" width="14" height="14" fill="#111"/>
+    <rect x="110" y="85" width="14" height="14" fill="#111"/>
+    <rect x="145" y="85" width="14" height="14" fill="#111"/>
+    <rect x="175" y="85" width="14" height="14" fill="#111"/>
+
+    <rect x="10" y="110" width="14" height="14" fill="#111"/>
+    <rect x="65" y="110" width="14" height="14" fill="#111"/>
+    <rect x="90" y="110" width="14" height="14" fill="#111"/>
+    <rect x="125" y="110" width="14" height="14" fill="#111"/>
+    <rect x="160" y="110" width="14" height="14" fill="#111"/>
+
+    <rect x="60" y="145" width="14" height="14" fill="#111"/>
+    <rect x="90" y="145" width="14" height="14" fill="#111"/>
+    <rect x="120" y="145" width="14" height="14" fill="#111"/>
+    <rect x="145" y="145" width="14" height="14" fill="#111"/>
+    <rect x="175" y="145" width="14" height="14" fill="#111"/>
+
+    <rect x="60" y="170" width="14" height="14" fill="#111"/>
+    <rect x="85" y="170" width="14" height="14" fill="#111"/>
+    <rect x="110" y="170" width="14" height="14" fill="#111"/>
+    <rect x="135" y="170" width="14" height="14" fill="#111"/>
+    <rect x="160" y="170" width="14" height="14" fill="#111"/>
+  </g>
+  <!-- Center Logo Badge -->
+  <circle cx="130" cy="153" r="16" fill="#B8860B"/>
+  <text x="130" y="159" text-anchor="middle" font-family="'Cinzel', serif" font-size="14" font-weight="700" fill="#FFF">D</text>
+</svg>

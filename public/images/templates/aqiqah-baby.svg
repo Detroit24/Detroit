@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <linearGradient id="aqiqahBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2F7F2"/>
+      <stop offset="100%" stop-color="#E2EBE2"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" rx="12" fill="url(#aqiqahBg)"/>
+  <!-- Greenery Laurel -->
+  <circle cx="100" cy="140" r="38" fill="#FFFFFF" stroke="#ADC1AD" stroke-width="2"/>
+  <!-- Baby Icon -->
+  <circle cx="100" cy="135" r="16" fill="#FADBC8"/>
+  <path d="M85 160 C85 148 115 148 115 160 Z" fill="#7A9A7B"/>
+  <!-- Texts -->
+  <text x="100" y="70" text-anchor="middle" font-family="'Playfair Display', serif" font-size="16" font-weight="700" fill="#4B634C">Aqiqah</text>
+  <text x="100" y="92" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="18" fill="#7A9A7B">Baby Arka</text>
+  <!-- Button -->
+  <rect x="55" y="195" width="90" height="24" rx="12" fill="#6A876B"/>
+  <text x="100" y="211" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF">Buka Undangan</text>
+</svg>
