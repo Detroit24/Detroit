@@ -56,8 +56,8 @@
                         
                         <!-- Selected Template Visual & Selector -->
                         <div class="text-center mb-4">
-                            <div class="position-relative d-inline-block rounded-3 overflow-hidden shadow-sm border mb-3" style="max-width: 200px;">
-                                <img id="templatePreviewImg" src="{{ asset('images/templates/wedding-andika.svg') }}" alt="Preview Template" class="img-fluid" style="height: 240px; width: 100%; object-fit: cover;">
+                            <div class="position-relative d-inline-block rounded-3 overflow-hidden shadow-sm border mb-3" style="max-width: 200px; height: 240px;">
+                                @include('partials.template-preview', ['tmpl' => $selectedTemplate, 'cardId' => 'templatePreviewCard'])
                             </div>
 
                             <div class="mb-3">
@@ -68,7 +68,13 @@
                                                 data-price="{{ $tmpl->effective_price }}"
                                                 data-name="{{ $tmpl->name }}"
                                                 data-slug="{{ $tmpl->slug }}"
-                                                data-img="{{ asset('images/' . str_replace('.jpg', '.svg', $tmpl->preview_image ?? 'templates/wedding-andika.svg')) }}"
+                                                data-style="{{ $tmpl->preview_theme['style'] }}"
+                                                data-bg="{{ $tmpl->preview_theme['bg'] }}"
+                                                data-primary="{{ $tmpl->preview_theme['primary'] }}"
+                                                data-text="{{ $tmpl->preview_theme['text'] }}"
+                                                data-eyebrow="{{ $tmpl->preview_theme['eyebrow'] }}"
+                                                data-names="{{ $tmpl->preview_theme['names'] }}"
+                                                data-date="{{ $tmpl->preview_theme['date'] }}"
                                                 {{ ($selectedTemplate && $selectedTemplate->id == $tmpl->id) ? 'selected' : '' }}>
                                             {{ $tmpl->name }} (Rp {{ number_format($tmpl->effective_price, 0, ',', '.') }})
                                         </option>
@@ -113,7 +119,7 @@
                             <label class="form-label small fw-semibold">Nama Lengkap Pemesan <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-end-0"><i class="bi bi-person text-muted"></i></span>
-                                <input type="text" name="customer_name" class="form-control border-start-0" placeholder="Contoh: Alfaro Fadhil" value="{{ old('customer_name', 'Alfaro Fadhil') }}" required>
+                                <input type="text" name="customer_name" class="form-control border-start-0" placeholder="Nama Lengkap" value="{{ old('customer_name') }}" required>
                             </div>
                         </div>
 
@@ -122,7 +128,7 @@
                             <label class="form-label small fw-semibold">Nomor WhatsApp Aktif <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-end-0"><i class="bi bi-whatsapp text-success"></i></span>
-                                <input type="text" name="customer_phone" class="form-control border-start-0" placeholder="Contoh: 081234567890" value="{{ old('customer_phone', '081234567890') }}" required>
+                                <input type="text" name="customer_phone" class="form-control border-start-0" value="{{ old('customer_phone') }}" required>
                             </div>
                             <div class="form-text small" style="font-size: 0.75rem;">Link undangan dan konfirmasi pesanan akan dikirimkan langsung ke nomor ini.</div>
                         </div>
@@ -132,7 +138,7 @@
                             <label class="form-label small fw-semibold">Alamat E-mail <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white border-end-0"><i class="bi bi-envelope text-muted"></i></span>
-                                <input type="email" name="customer_email" class="form-control border-start-0" placeholder="Contoh: alfaro@email.com" value="{{ old('customer_email', 'alfaro@email.com') }}" required>
+                                <input type="email" name="customer_email" class="form-control border-start-0" placeholder="nama@email.com" value="{{ old('customer_email') }}" required>
                             </div>
                         </div>
 
@@ -142,28 +148,28 @@
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Judul Undangan</label>
-                            <input type="text" name="event_title" class="form-control" placeholder="Contoh: The Wedding Of Andika & Salsabila" value="{{ old('event_title', 'The Wedding Of Andika & Salsabila') }}">
+                            <input type="text" name="event_title" class="form-control" placeholder="Contoh: Undangan pernikahan kami" value="{{ old('event_title') }}">
                         </div>
 
                         <div class="row g-2 mb-3">
                             <div class="col-sm-6">
                                 <label class="form-label small fw-semibold">Mempelai / Pihak Pria</label>
-                                <input type="text" name="groom_name" class="form-control" placeholder="Nama Pria" value="{{ old('groom_name', 'Andika') }}">
+                                <input type="text" name="groom_name" class="form-control" placeholder="Nama Pria" value="{{ old('groom_name') }}">
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label small fw-semibold">Mempelai / Pihak Wanita</label>
-                                <input type="text" name="bride_name" class="form-control" placeholder="Nama Wanita" value="{{ old('bride_name', 'Salsabila') }}">
+                                <input type="text" name="bride_name" class="form-control" placeholder="Nama Wanita" value="{{ old('bride_name') }}">
                             </div>
                         </div>
 
                         <div class="row g-2 mb-4">
                             <div class="col-sm-6">
                                 <label class="form-label small fw-semibold">Tanggal Acara</label>
-                                <input type="date" name="event_date" class="form-control" value="{{ old('event_date', '2024-12-14') }}">
+                                <input type="date" name="event_date" class="form-control" value="{{ old('event_date') }}">
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label small fw-semibold">Lokasi / Venue</label>
-                                <input type="text" name="event_location" class="form-control" placeholder="Nama Gedung / Kota" value="{{ old('event_location', 'Hotel Indonesia Kempinski Jakarta') }}">
+                                <input type="text" name="event_location" class="form-control" placeholder="Nama Gedung / Kota" value="{{ old('event_location') }}">
                             </div>
                         </div>
 
@@ -186,18 +192,43 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const select = document.getElementById('templateSelect');
-        const previewImg = document.getElementById('templatePreviewImg');
+        const card = document.getElementById('templatePreviewCard');
         const summaryName = document.getElementById('summaryTemplateName');
         const summaryPrice = document.getElementById('summaryPrice');
         const summaryTotal = document.getElementById('summaryTotal');
+
+        function applyPreview(opt) {
+            if (!card) return;
+            const style = opt.getAttribute('data-style') || 'wedding-arch';
+            card.className = 'tpl-card tpl-card--' + style;
+            card.style.setProperty('--tpl-bg', opt.getAttribute('data-bg') || '#FCF9F5');
+            card.style.setProperty('--tpl-primary', opt.getAttribute('data-primary') || '#B8860B');
+            card.style.setProperty('--tpl-text', opt.getAttribute('data-text') || '#2C241E');
+
+            card.querySelector('.tpl-eyebrow').textContent = opt.getAttribute('data-eyebrow') || '';
+
+            const namesEl = card.querySelector('.tpl-names');
+            const names = opt.getAttribute('data-names') || '';
+            const parts = names.split('&').map(function (p) { return p.trim(); }).filter(function (p) { return p.length > 0; });
+            if (parts.length > 1) {
+                namesEl.innerHTML = '<span class="tpl-name-first">' + parts[0] + '</span><span class="tpl-name-amp">&amp;</span><span class="tpl-name-last">' + parts[1] + '</span>';
+            } else {
+                namesEl.textContent = names;
+            }
+
+            card.querySelector('.tpl-date').textContent = opt.getAttribute('data-date') || '';
+
+            card.classList.remove('tpl-anim');
+            void card.offsetWidth;
+            card.classList.add('tpl-anim');
+        }
 
         function updateSummary() {
             const opt = select.options[select.selectedIndex];
             const name = opt.getAttribute('data-name');
             const price = parseInt(opt.getAttribute('data-price')) || 149000;
-            const img = opt.getAttribute('data-img');
 
-            if (previewImg && img) previewImg.src = img;
+            applyPreview(opt);
             if (summaryName) summaryName.textContent = name;
             
             const formatted = 'Rp ' + price.toLocaleString('id-ID');

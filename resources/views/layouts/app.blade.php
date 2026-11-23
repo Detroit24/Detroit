@@ -14,6 +14,7 @@
     <!-- Bootstrap 5 CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/template-preview.css') }}">
 
     <style>
         :root {
@@ -309,7 +310,7 @@
                         <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
                         <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
                         <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
-                        <a href="https://wa.me/6281234567890" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://wa.me/{{ \App\Models\StoreSetting::get('whatsapp_number') }}" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
                     </div>
                     <div class="small text-muted" style="font-size: 0.75rem;">
                         &copy; 2025 DETROIT. All rights reserved.

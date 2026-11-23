@@ -25,12 +25,12 @@
                 <div class="row g-3 mb-3">
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Nomor WhatsApp Admin (Notifikasi)</label>
-                        <input type="text" name="whatsapp_number" class="form-control" value="{{ $settings['whatsapp_number'] ?? '6281234567890' }}">
+                        <input type="text" name="whatsapp_number" class="form-control" value="{{ $settings['whatsapp_number'] ?? '' }}">
                         <div class="form-text small" style="font-size: 0.75rem;">Gunakan format internasional tanpa tanda plus, contoh: 6281234567890</div>
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Alamat E-mail Toko</label>
-                        <input type="email" name="store_email" class="form-control" value="{{ $settings['store_email'] ?? 'hello@detroit.id' }}">
+                        <input type="email" name="store_email" class="form-control" value="{{ $settings['store_email'] ?? '' }}">
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                 <div class="row g-3 mb-3">
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Nomor Rekening BCA</label>
-                        <input type="text" name="bank_bca_number" class="form-control" value="{{ $settings['bank_bca_number'] ?? '8271928371' }}">
+                        <input type="text" name="bank_bca_number" class="form-control" value="{{ $settings['bank_bca_number'] ?? '' }}">
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Nama Pemilik Rekening BCA</label>
@@ -51,7 +51,7 @@
                 <div class="row g-3 mb-4">
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Nomor Rekening Bank Mandiri</label>
-                        <input type="text" name="bank_mandiri_number" class="form-control" value="{{ $settings['bank_mandiri_number'] ?? '1370019283712' }}">
+                        <input type="text" name="bank_mandiri_number" class="form-control" value="{{ $settings['bank_mandiri_number'] ?? '' }}">
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label small fw-semibold">Nama Pemilik Rekening Mandiri</label>

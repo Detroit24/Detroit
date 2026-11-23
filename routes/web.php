@@ -32,6 +32,7 @@ Route::get('/pesanan-berhasil/{order_code}', [OrderController::class, 'success']
 // Live Digital Invitation
 Route::get('/invitation/{slug}', [InvitationController::class, 'show'])->name('invitation.show');
 Route::get('/undangan/{slug}', [InvitationController::class, 'show']); // Indonesian alias
+Route::get('/demo/{slug}', [InvitationController::class, 'demo'])->name('invitation.demo'); // Demo Template
 Route::post('/invitation/{slug}/rsvp', [InvitationController::class, 'rsvp'])->name('invitation.rsvp');
 Route::post('/invitation/{slug}/ucapan', [InvitationController::class, 'message'])->name('invitation.message');
 

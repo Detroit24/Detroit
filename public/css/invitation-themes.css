@@ -1,0 +1,32 @@
+/* --- GLOBAL INVITATION STYLE --- */
+.inv-body { transition: all 0.5s ease; }
+
+/* 1. TEMA WEDDING (Elegant Gold/White) */
+.theme-wedding { --inv-bg: #FAF6F0; --inv-primary: #B8860B; --inv-text: #2B231D; }
+.theme-wedding .inv-card { border: 1px solid #E8DCCF; border-radius: 0; position: relative; }
+.theme-wedding .inv-card::before { content: ''; position: absolute; inset: 5px; border: 1px solid var(--inv-primary); opacity: 0.3; pointer-events: none; }
+
+/* 2. TEMA ISLAMIC (Deep Blue/Midnight) */
+.theme-islamic { --inv-bg: #0B1726; --inv-primary: #E8C36A; --inv-text: #FFFFFF; }
+.theme-islamic body, .theme-islamic #openingCover { background: #0B1726 !important; color: #FFF !important; }
+.theme-islamic .inv-card { background: #142B47; border: 1px solid #255082; color: #FFF; border-radius: 15px; }
+.theme-islamic .text-muted, .theme-islamic .text-secondary { color: #A0B3C6 !important; }
+.theme-islamic .countdown-box { background: #1C3D63; border-color: #255082; color: #FFF; }
+.theme-islamic h1, .theme-islamic h2, .theme-islamic h3, .theme-islamic h4, .theme-islamic .text-dark { color: #FFF !important; }
+
+/* 3. TEMA BIRTHDAY (Playful Pink/Pastel) */
+.theme-birthday { --inv-bg: #FFE8EC; --inv-primary: #D85A7F; --inv-text: #2E282A; }
+.theme-birthday body, .theme-birthday #openingCover { background: #FFE8EC !important; }
+.theme-birthday .inv-card { border-radius: 30px; border: 3px solid #FFB4C2; background: #FFF; }
+.theme-birthday .btn-warning { background: var(--inv-primary) !important; }
+
+/* 4. TEMA AQIQAH (Natural Sage) */
+.theme-aqiqah { --inv-bg: #F2F7F2; --inv-primary: #7A9A7B; --inv-text: #4B634C; }
+.theme-aqiqah body, .theme-aqiqah #openingCover { background: #F2F7F2 !important; }
+.theme-aqiqah .inv-card { border-radius: 50px 0 50px 0; border: 2px solid #ADC1AD; }
+
+/* 5. TEMA DARK MODERN (Black/Gold) */
+.theme-dark { --inv-bg: #111111; --inv-primary: #D4AF37; --inv-text: #FFFFFF; }
+.theme-dark body, .theme-dark #openingCover { background: #111111 !important; color: #FFF !important; }
+.theme-dark .inv-card { background: #1B1B1B; border: 1px solid #333; color: #FFF; }
+.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark .text-dark { color: #D4AF37 !important; }

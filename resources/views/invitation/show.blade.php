@@ -14,6 +14,7 @@
     <!-- Bootstrap 5 CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/invitation-themes.css') }}">
 
     <style>
         :root {
@@ -115,7 +116,24 @@
         }
     </style>
 </head>
-<body class="locked">
+@php
+    $tplSlug = $invitation->template->slug ?? '';
+    $themeClass = match (true) {
+        str_contains($tplSlug, 'khitan') || str_contains($tplSlug, 'pengajian') || str_contains($tplSlug, 'walimatussafar') => 'theme-islamic',
+        str_contains($tplSlug, 'birthday') || str_contains($tplSlug, 'seventeen') => 'theme-birthday',
+        str_contains($tplSlug, 'aqiqah') => 'theme-aqiqah',
+        str_contains($tplSlug, 'royal') || str_contains($tplSlug, 'glam') => 'theme-dark',
+        default => 'theme-wedding',
+    };
+    $isDemo = str_starts_with($invitation->slug ?? '', 'demo-');
+    $eventDateLabel = $primaryEvent?->event_date ? $primaryEvent->event_date->locale('id')->isoFormat('dddd, D MMMM YYYY') : 'Sabtu, 14 Desember 2024';
+@endphp
+<body class="locked {{ $themeClass }}">
+    @if($isDemo)
+    <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 10000; background: linear-gradient(90deg, #B8860B, #8C6200); color: #fff; text-align: center; padding: 8px 12px; font-weight: 700; font-size: 0.85rem; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+        <i class="bi bi-eye"></i> MODE DEMO — Desain undangan digital premium DETROIT. Data sampel.
+    </div>
+    @endif
 
     <!-- Background Audio Element -->
     <audio id="bgmAudio" loop preload="auto">
@@ -181,7 +199,7 @@
                 {{ $content['groom_name'] ?? 'Andika Pratama' }} &amp; {{ $content['bride_name'] ?? 'Salsabila Putri' }}
             </h2>
             <div class="text-muted fw-semibold small letter-spacing-1 mb-4">
-                SABTU, 14 DESEMBER 2024
+                {{ mb_strtoupper($eventDateLabel) }}
             </div>
 
             <!-- Quote Quran -->
@@ -254,7 +272,7 @@
             </div>
 
             <div class="small text-muted">
-                <i class="bi bi-calendar-event text-warning me-1"></i> Sabtu, 14 Desember 2024
+                <i class="bi bi-calendar-event text-warning me-1"></i> {{ $eventDateLabel }}
             </div>
         </div>
 
@@ -459,7 +477,7 @@
         }
 
         // Live Countdown calculation
-        const targetDate = new Date("2024-12-14T08:00:00").getTime();
+        const targetDate = new Date("{{ $primaryEvent?->event_date?->format('Y-m-d') ?? '2024-12-14' }}T08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
             let distance = targetDate - now;

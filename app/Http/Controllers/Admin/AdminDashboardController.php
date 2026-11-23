@@ -5,34 +5,51 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Template;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-        // 1. Total Pesanan
-        $actualOrderCount = Order::count();
-        // Matching Image 2 metrics: Total Pesanan 245 (+12%)
-        $totalOrders = max(245, $actualOrderCount);
-        $orderGrowth = '+12%';
+        $now = Carbon::now();
+        $thisMonthStart = $now->copy()->startOfMonth();
+        $lastMonthStart = $thisMonthStart->copy()->subMonth();
+        $lastMonthEnd = $thisMonthStart->copy()->subSecond();
 
-        // 2. Pendapatan (Revenue)
-        $actualRevenue = Order::where('status', 'paid')->sum('final_amount');
-        // Matching Image 2 metrics: Rp 35.750.000 (+18%)
-        $totalRevenue = max(35750000, $actualRevenue);
-        $revenueGrowth = '+18%';
+        // 1. Total Pesanan (real data dari tabel orders)
+        $totalOrders = Order::count();
+        $thisMonthOrders = Order::whereBetween('created_at', [$thisMonthStart, $now])->count();
+        $lastMonthOrders = Order::whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->count();
+        $orderGrowth = $lastMonthOrders > 0 ? '+' . round((($thisMonthOrders - $lastMonthOrders) / $lastMonthOrders) * 100, 0) . '%' : '+0%';
+
+        // 2. Pendapatan (real revenue dari order berstatus paid)
+        $totalRevenue = (float) Order::where('status', 'paid')->sum('final_amount');
+        $thisMonthRevenue = (float) Order::where('status', 'paid')->whereBetween('created_at', [$thisMonthStart, $now])->sum('final_amount');
+        $lastMonthRevenue = (float) Order::where('status', 'paid')->whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->sum('final_amount');
+        $revenueGrowth = $lastMonthRevenue > 0 ? '+' . round((($thisMonthRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100, 0) . '%' : '+0%';
 
         // 3. Template Aktif
         $activeTemplates = Template::where('is_active', true)->count();
-        $templateGrowth = '+2';
+        $templatesThisMonth = Template::whereBetween('created_at', [$thisMonthStart, $now])->where('is_active', true)->count();
+        $templatesLastMonth = Template::whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->where('is_active', true)->count();
+        $templateGrowth = $templatesLastMonth > 0 ? '+' . round((($templatesThisMonth - $templatesLastMonth) / $templatesLastMonth) * 100, 0) . '%' : '+0%';
 
-        // 4. Monthly Chart Data (Jan - Des)
-        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-        $salesData = [12, 19, 15, 25, 22, 30, 28, 35, 42, 38, 48, 55]; // Revenue progression curve matching image 2
+        // 4. Monthly chart data (real revenue per bulan, 12 bulan terakhir)
+        $months = [];
+        $salesData = [];
+        $chartStart = $thisMonthStart->copy()->subMonths(11);
+        for ($i = 0; $i < 12; $i++) {
+            $monthStart = $chartStart->copy();
+            $monthEnd = $monthStart->copy()->addMonth()->subSecond();
+            $revenue = (float) Order::where('status', 'paid')
+                ->whereBetween('created_at', [$monthStart, $monthEnd])
+                ->sum('final_amount');
+
+            $months[] = $monthStart->format('M');
+            $salesData[] = (int) round($revenue / 1000000);
+            $chartStart->addMonth();
+        }
 
         // 5. Pesanan Terbaru
         $recentOrders = Order::with('user', 'items', 'payment')->latest()->take(7)->get();

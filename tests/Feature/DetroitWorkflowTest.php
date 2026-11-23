@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Template;
 use App\Models\Invitation;
+use App\Models\InvitationEvent;
+use App\Models\InvitationContent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DetroitWorkflowTest extends TestCase
@@ -47,20 +49,20 @@ class DetroitWorkflowTest extends TestCase
         // 2. Submit order form
         $postData = [
             'template_id' => $template->id,
-            'customer_name' => 'Alfaro Fadhil',
-            'customer_phone' => '081234567890',
-            'customer_email' => 'alfaro.unique@email.com',
-            'event_title' => 'The Wedding Of Andika & Salsabila',
-            'event_date' => '2024-12-14',
-            'groom_name' => 'Andika',
-            'bride_name' => 'Salsabila',
+            'customer_name' => 'Budi Santoso',
+            'customer_phone' => '081388776655',
+            'customer_email' => 'budi.unique@email.com',
+            'event_title' => 'The Wedding Of Budi & Santi',
+            'event_date' => '2026-12-14',
+            'groom_name' => 'Budi',
+            'bride_name' => 'Santi',
             'event_location' => 'Jakarta',
         ];
 
         $storeResponse = $this->post('/pesan', $postData);
         $storeResponse->assertStatus(302);
 
-        $order = Order::where('notes', 'like', '%Alfaro Fadhil%')->latest()->first();
+        $order = Order::latest()->first();
         $this->assertNotNull($order);
 
         // 3. Visit payment page
@@ -91,8 +93,41 @@ class DetroitWorkflowTest extends TestCase
      */
     public function test_invitation_view_and_rsvp()
     {
-        $invitation = Invitation::where('slug', 'andika-salsabila')->first();
-        $this->assertNotNull($invitation);
+        $user = User::where('email', 'admin@detroit.id')->first();
+        $this->assertNotNull($user);
+
+        $invitation = Invitation::create([
+            'user_id' => $user->id,
+            'template_id' => Template::first()->id,
+            'package_id' => null,
+            'slug' => 'budi-santoso-123',
+            'title' => 'The Wedding Of Budi & Santi',
+            'status' => 'published',
+            'starts_at' => now(),
+            'published_at' => now(),
+        ]);
+
+        InvitationEvent::create([
+            'invitation_id' => $invitation->id,
+            'event_name' => 'Akad Nikah',
+            'event_date' => '2026-12-14',
+            'event_time' => '08:00:00',
+            'location' => 'Jakarta',
+            'description' => 'Momen sakral ijab kabul.',
+        ]);
+
+        foreach ([
+            'groom_name' => 'Budi Santoso',
+            'bride_name' => 'Santi Larasati',
+            'quote' => 'Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri.',
+            'quote_source' => 'QS. Ar-Rum: 21',
+        ] as $key => $value) {
+            InvitationContent::create([
+                'invitation_id' => $invitation->id,
+                'key' => $key,
+                'value' => $value,
+            ]);
+        }
 
         $response = $this->get('/invitation/' . $invitation->slug . '?to=Budi+Santoso');
         $response->assertStatus(200);
@@ -135,5 +170,23 @@ class DetroitWorkflowTest extends TestCase
         $dashboardResponse->assertSee('Total Pesanan');
         $dashboardResponse->assertSee('Grafik Penjualan');
         $dashboardResponse->assertSee('Pesanan Terbaru');
+    }
+
+    /**
+     * Test Demo Templates Render (Elegance Wedding & Wedding Rizky Dinda)
+     */
+    public function test_template_demos_render()
+    {
+        $response1 = $this->get('/demo/elegance-wedding?to=Tamu+Undangan');
+        $response1->assertStatus(200);
+        $response1->assertSee('Aulia');
+        $response1->assertSee('Rama');
+
+        $response2 = $this->get('/demo/wedding-rizky-dinda?to=Sahabat+Tercinta');
+        $response2->assertStatus(200);
+        $response2->assertSee('Rizky');
+        $response2->assertSee('Dinda');
+        $response2->assertSee('Sahabat Tercinta');
+        $response2->assertSee('Mempelai Bahagia');
     }
 }

@@ -150,10 +150,10 @@
                                 <div class="d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 border bg-light">
                                     <div>
                                         <div class="fw-bold text-primary">Bank BCA</div>
-                                        <div class="font-monospace fw-bold fs-6" id="bcaAcc">8271928371</div>
-                                        <div class="small text-muted">a.n DETROIT Studio</div>
+                                        <div class="font-monospace fw-bold fs-6" id="bcaAcc">{{ $storeSettings['bank_bca_number'] ?? '' }}</div>
+                                        <div class="small text-muted">a.n {{ $storeSettings['bank_bca_holder'] ?? '' }}</div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="8271928371">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="{{ $storeSettings['bank_bca_number'] ?? '' }}">
                                         <i class="bi bi-copy"></i> Salin
                                     </button>
                                 </div>
@@ -162,10 +162,10 @@
                                 <div class="d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 border bg-light">
                                     <div>
                                         <div class="fw-bold" style="color: #003876;">Bank Mandiri</div>
-                                        <div class="font-monospace fw-bold fs-6" id="mandiriAcc">1370019283712</div>
-                                        <div class="small text-muted">a.n DETROIT Studio</div>
+                                        <div class="font-monospace fw-bold fs-6" id="mandiriAcc">{{ $storeSettings['bank_mandiri_number'] ?? '' }}</div>
+                                        <div class="small text-muted">a.n {{ $storeSettings['bank_mandiri_holder'] ?? '' }}</div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="1370019283712">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="{{ $storeSettings['bank_mandiri_number'] ?? '' }}">
                                         <i class="bi bi-copy"></i> Salin
                                     </button>
                                 </div>
@@ -178,10 +178,10 @@
                                 <div class="d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 border bg-light">
                                     <div>
                                         <div class="fw-bold text-success">GoPay / DANA / OVO</div>
-                                        <div class="font-monospace fw-bold fs-6">0812-3456-7890</div>
+                                        <div class="font-monospace fw-bold fs-6">{{ $storeSettings['ewallet_number'] ?? '' }}</div>
                                         <div class="small text-muted">a.n DETROIT Studio</div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="081234567890">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" data-target="{{ $storeSettings['ewallet_number'] ?? '' }}">
                                         <i class="bi bi-copy"></i> Salin
                                     </button>
                                 </div>

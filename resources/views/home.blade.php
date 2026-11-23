@@ -59,10 +59,6 @@
                             <span>Pesan Sekarang</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>
-                        <a href="{{ route('invitation.show', 'andika-salsabila') }}" target="_blank" class="btn btn-detroit-outline px-4 py-2">
-                            <i class="bi bi-play-circle text-warning"></i>
-                            <span>Lihat Demo</span>
-                        </a>
                     </div>
                 </div>
 
@@ -116,16 +112,10 @@
                     <div class="col">
                         <div class="detroit-card h-100 overflow-hidden d-flex flex-column text-center p-2">
                             <!-- Template Preview -->
-                            <div class="position-relative rounded-3 overflow-hidden mb-2" style="background-color: #F8F5F0;">
-                                @php
-                                    $imgUrl = asset('images/' . $tmpl->preview_image);
-                                    if (!str_contains($tmpl->preview_image, '.svg')) {
-                                        $imgUrl = str_replace('.jpg', '.svg', $imgUrl);
-                                    }
-                                @endphp
-                                <img src="{{ $imgUrl }}" alt="{{ $tmpl->name }}" class="img-fluid rounded-3" style="width: 100%; height: 230px; object-fit: cover;" onerror="this.src='{{ asset('images/templates/wedding-andika.svg') }}'">
-                                
-                                <div class="position-absolute top-0 start-0 m-2">
+                            <div class="position-relative rounded-3 overflow-hidden mb-2" style="background-color: #F8F5F0; height: 230px;">
+                                @include('partials.template-preview', ['tmpl' => $tmpl])
+
+                                <div class="position-absolute top-0 start-0 m-2" style="z-index: 2">
                                     <span class="badge bg-white text-dark shadow-sm small" style="font-size: 0.65rem; border: 1px solid #E8DCCF;">
                                         {{ $tmpl->category->name ?? 'Premium' }}
                                     </span>
@@ -141,8 +131,8 @@
                                     <a href="{{ route('order.checkout', ['template' => $tmpl->slug]) }}" class="btn btn-sm btn-detroit py-1" style="font-size: 0.75rem;">
                                         <i class="bi bi-check2"></i> Pilih Template
                                     </a>
-                                    <a href="{{ route('invitation.show', 'andika-salsabila') }}" target="_blank" class="btn btn-sm btn-outline-secondary py-1" style="font-size: 0.75rem;">
-                                        <i class="bi bi-eye"></i> Demo
+                                    <a href="{{ route('invitation.demo', ['slug' => $tmpl->slug]) }}" class="btn btn-sm btn-detroit-outline py-1" style="font-size: 0.75rem;">
+                                        <i class="bi bi-eye"></i> Lihat Demo
                                     </a>
                                 </div>
                             </div>
@@ -181,17 +171,7 @@
 
             <!-- Categories Cards Row matching Image 1 -->
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
-                @php
-                    $categoryVisuals = [
-                        ['name' => 'Pernikahan & Lamaran', 'icon' => 'bi-heart', 'desc' => 'Sakral & Romantis'],
-                        ['name' => 'Khitanan & Aqiqah', 'icon' => 'bi-moon-stars', 'desc' => 'Tasyakuran Berkah'],
-                        ['name' => 'Ulang Tahun & Anniversary', 'icon' => 'bi-cake2', 'desc' => 'Pesta Meriah'],
-                        ['name' => 'Pengajian & Acara Islami', 'icon' => 'bi-book', 'desc' => 'Majelis Doa'],
-                        ['name' => 'Acara Lainnya', 'icon' => 'bi-star', 'desc' => 'Reuni & Gathering'],
-                    ];
-                @endphp
-
-                @foreach($categories as $idx => $cat)
+                @foreach($categories as $cat)
                     <div class="col">
                         <a href="{{ route('home', ['category' => $cat->id]) }}#templates" class="text-decoration-none">
                             <div class="detroit-card text-center p-4 h-100 d-flex flex-column justify-content-center align-items-center">
@@ -360,7 +340,7 @@
                             <li><i class="bi bi-check2 text-warning fw-bold me-2"></i> Prioritas Support 24/7</li>
                         </ul>
 
-                        <a href="https://wa.me/6281234567890?text=Halo%20DETROIT%2C%20saya%20tertarik%20dengan%20Paket%20Enterprise" target="_blank" class="btn btn-detroit-outline w-100 py-2">
+                        <a href="https://wa.me/{{ $storeSettings['whatsapp_number'] ?? '' }}?text=Halo%20DETROIT%2C%20saya%20tertarik%20dengan%20Paket%20Enterprise" target="_blank" class="btn btn-detroit-outline w-100 py-2">
                             Hubungi Kami
                         </a>
                     </div>
