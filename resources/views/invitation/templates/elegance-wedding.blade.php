@@ -4,11 +4,11 @@
     $guestName = $guestName ?? 'Tamu Undangan';
     $img = fn($p) => $p ? (Str::startsWith($p, ['http', '/']) ? $p : asset('storage/' . $p)) : null;
 
-    // FOTO DEFAULT: ganti URL/path di sini kalau belum upload dari admin
+    // FOTO DEFAULT: tema Emerald & Gold Luxury (Aulia & Rama)
     $ph = [
-        'hero'  => 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=85&w=1400',
-        'groom' => 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=85&w=900',
-        'bride' => 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=85&w=900',
+        'hero'  => 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=85&w=1200',
+        'groom' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&q=85&w=800',
+        'bride' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&q=85&w=800',
     ];
     $hero     = $img($c['hero_image'] ?? null) ?: $ph['hero'];
     $groomPic = $img($c['groom_photo'] ?? null) ?: $ph['groom'];
@@ -123,58 +123,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .inv-shell{max-width:1040px;margin:0 auto;padding-bottom:110px;padding-top:80px}
 
 /* Cover / Hero */
-#openingCover{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px 14px;overflow-y:auto;
+#openingCover{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:clamp(12px,2.5vh,24px) clamp(12px,2.5vw,20px);overflow-y:auto;
   background:radial-gradient(circle at center,#0B2D21,#061F16 50%,#03120C);transition:transform 1.2s cubic-bezier(.85,0,.15,1),opacity 1.2s}
 #openingCover.opened{transform:translateY(-100%);opacity:0;pointer-events:none}
-.hero-banner-card{background:radial-gradient(circle at 60% 40%,#0E3628,#082117 75%,#051610);border:1.5px solid rgba(212,175,55,.45);border-radius:28px;
-  box-shadow:0 25px 60px rgba(0,0,0,.6),inset 0 0 40px rgba(212,175,55,.1);position:relative;overflow:hidden;padding:40px 30px}
-.corner-flourish{position:absolute;width:120px;height:120px;pointer-events:none;opacity:.65}
-.corner-flourish.tl{top:-6px;left:-6px}.corner-flourish.tr{top:-6px;right:-6px;transform:scaleX(-1)}
-.corner-flourish.bl{bottom:-6px;left:-6px;transform:scaleY(-1)}.corner-flourish.br{bottom:-6px;right:-6px;transform:scale(-1)}
+.hero-banner-card{background:radial-gradient(circle at 60% 40%,#0E3628,#082117 75%,#051610);border:1.5px solid rgba(212,175,55,.45);border-radius:24px;
+  box-shadow:0 25px 60px rgba(0,0,0,.6),inset 0 0 40px rgba(212,175,55,.1);position:relative;overflow:hidden;padding:clamp(20px,3vh,30px) clamp(16px,2.5vw,26px);
+  width:100%;max-width:880px;margin:auto}
+.corner-flourish{position:absolute;width:clamp(60px,10vw,110px);height:clamp(60px,10vw,110px);pointer-events:none;opacity:.6}
+.corner-flourish.tl{top:-4px;left:-4px}.corner-flourish.tr{top:-4px;right:-4px;transform:scaleX(-1)}
+.corner-flourish.bl{bottom:-4px;left:-4px;transform:scaleY(-1)}.corner-flourish.br{bottom:-4px;right:-4px;transform:scale(-1)}
 
-.arch-photo-container{position:relative;width:100%;max-width:370px;margin:0 auto;border-radius:190px 190px 18px 18px;padding:8px;
-  background:linear-gradient(180deg,#F3E1B6,#D4AF37 50%,#4D3812);box-shadow:0 16px 40px rgba(0,0,0,.55);transition:box-shadow .4s}
-.arch-photo-container:hover{box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 40px rgba(212,175,55,.25)}
-.arch-photo-inner{width:100%;height:480px;border-radius:182px 182px 12px 12px;background:#072017 center top/cover no-repeat;position:relative;overflow:hidden;
+.arch-photo-container{position:relative;width:100%;max-width:300px;margin:0 auto;border-radius:180px 180px 16px 16px;padding:6px;
+  background:linear-gradient(180deg,#F3E1B6,#D4AF37 50%,#4D3812);box-shadow:0 14px 34px rgba(0,0,0,.55);transition:box-shadow .4s}
+.arch-photo-container:hover{box-shadow:0 18px 45px rgba(0,0,0,.6),0 0 35px rgba(212,175,55,.25)}
+.arch-photo-inner{width:100%;height:390px;border-radius:174px 174px 10px 10px;background:#072017 center 20%/cover no-repeat;position:relative;overflow:hidden;
   filter:contrast(1.05) saturate(1.08) brightness(1.02)}
 .arch-photo-inner::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.arch-photo-inner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 75%,rgba(4,20,14,.65));pointer-events:none}
+.arch-photo-inner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 72%,rgba(4,20,14,.65));pointer-events:none}
 .pos-groom{background-position:16% 18%!important}
 .pos-bride{background-position:84% 18%!important}
 
-.arch-card-right{border:1px solid var(--line);background:rgba(7,32,23,.72);backdrop-filter:blur(10px);border-radius:200px 200px 24px 24px;
-  padding:50px 30px 40px;text-align:center;position:relative;box-shadow:inset 0 0 30px rgba(212,175,55,.08)}
-.arch-card-right::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(212,175,55,.3);border-radius:194px 194px 18px 18px;pointer-events:none}
-.wedding-subtitle{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:5px;color:var(--gold-light);font-weight:700;margin-bottom:8px}
+.arch-card-right{border:1px solid var(--line);background:rgba(7,32,23,.72);backdrop-filter:blur(10px);border-radius:170px 170px 20px 20px;
+  padding:32px 22px 26px;text-align:center;position:relative;box-shadow:inset 0 0 30px rgba(212,175,55,.08)}
+.arch-card-right::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(212,175,55,.3);border-radius:164px 164px 15px 15px;pointer-events:none}
+.wedding-subtitle{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:4px;color:var(--gold-light);font-weight:700;margin-bottom:4px}
 
-.couple-name-hero{display:flex;flex-direction:column;align-items:center;gap:2px;margin:0 0 18px}
-.cn-name{font-family:'Pinyon Script',cursive;font-size:clamp(3.4rem,7vw,5.2rem);line-height:1.05;
+.couple-name-hero{display:flex;flex-direction:column;align-items:center;gap:2px;margin:0 0 10px}
+.cn-name{font-family:'Pinyon Script',cursive;font-size:clamp(2.5rem,5.5vw,4.2rem);line-height:1.02;
   background:linear-gradient(100deg,#F3E1B6 0%,#FFF6DA 35%,#D4AF37 60%,#F3E1B6 100%);background-size:220% 100%;
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   filter:drop-shadow(0 3px 10px rgba(212,175,55,.35));animation:goldSweep 2.6s ease-out .6s 1 both}
 @keyframes goldSweep{from{background-position:100% 0}to{background-position:0 0}}
-.cn-amp{display:flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.9rem;color:var(--gold);line-height:1}
-.cn-amp::before,.cn-amp::after{content:"";width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.cn-amp{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.4rem;color:var(--gold);line-height:1;margin:2px 0}
+.cn-amp::before,.cn-amp::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .cn-amp::after{transform:scaleX(-1)}
 
-.wedding-date-hero{font-family:'Cinzel',serif;font-size:1.05rem;letter-spacing:2px;color:#fff;font-weight:600;margin-bottom:6px}
-.wedding-venue-hero{font-size:.95rem;color:var(--text-gold);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px}
-.wedding-quote-hero{font-style:italic;font-size:.95rem;max-width:360px;margin:0 auto 22px;line-height:1.6}
+.wedding-date-hero{font-family:'Cinzel',serif;font-size:.95rem;letter-spacing:2px;color:#fff;font-weight:600;margin-bottom:3px}
+.wedding-venue-hero{font-size:.86rem;color:var(--text-gold);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:5px}
+.wedding-quote-hero{font-style:italic;font-size:.86rem;max-width:320px;margin:0 auto 14px;line-height:1.5;color:#E0ECE5}
 
-.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:360px;margin:0 auto 26px}
-.countdown-tile{background:rgba(4,20,14,.88);border:1px solid rgba(212,175,55,.55);border-radius:12px;padding:10px 4px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
-.countdown-num{font-family:'Cinzel',serif;font-size:1.65rem;font-weight:700;color:var(--gold-light);line-height:1.1}
-.countdown-lbl{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:#D6E3DC;margin-top:3px;font-weight:600}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:300px;margin:0 auto 14px}
+.countdown-tile{background:rgba(4,20,14,.88);border:1px solid rgba(212,175,55,.55);border-radius:10px;padding:6px 2px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.countdown-num{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:700;color:var(--gold-light);line-height:1.1}
+.countdown-lbl{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:#D6E3DC;margin-top:2px;font-weight:600}
 
-.guest-callout-box{background:rgba(4,20,14,.85);border:1px solid rgba(212,175,55,.45);border-radius:12px;padding:10px 18px;max-width:360px;margin:0 auto 24px}
-.guest-label{color:var(--text-gold);font-size:.74rem;letter-spacing:1.2px;font-weight:600;margin-bottom:3px}
-.guest-name{font-family:'Cinzel',serif;font-size:1.25rem;font-weight:700;color:#FFF8EB;overflow-wrap:anywhere}
+.guest-callout-box{background:rgba(4,20,14,.85);border:1px solid rgba(212,175,55,.45);border-radius:10px;padding:8px 14px;max-width:300px;margin:0 auto 16px}
+.guest-label{color:var(--text-gold);font-size:.68rem;letter-spacing:1px;font-weight:600;margin-bottom:2px}
+.guest-name{font-family:'Cinzel',serif;font-size:1.08rem;font-weight:700;color:#FFF8EB;overflow-wrap:anywhere}
 
-.btn-gold-cta{background:var(--gold-btn);color:#1A1102!important;font-family:'Cinzel',serif;font-weight:700;font-size:.9rem;letter-spacing:2px;text-transform:uppercase;
-  border:0;border-radius:50px;padding:14px 42px;box-shadow:0 8px 25px rgba(212,175,55,.45);display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+.btn-gold-cta{background:var(--gold-btn);color:#1A1102!important;font-family:'Cinzel',serif;font-weight:700;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;
+  border:0;border-radius:50px;padding:11px 34px;box-shadow:0 8px 25px rgba(212,175,55,.45);display:inline-flex;align-items:center;gap:8px;cursor:pointer;
   text-decoration:none;transition:all .3s cubic-bezier(.175,.885,.32,1.275)}
-.btn-gold-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 30px rgba(212,175,55,.65)}
+.btn-gold-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 30px rgba(212,175,55,.65)}
 .btn-gold-cta:disabled{opacity:.7;transform:none}
 
 /* Sections */
@@ -229,26 +230,33 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 @media(max-width:991px){
   .royal-nav-links{display:none}
-  .hero-banner-card{padding:32px 18px}
-  .arch-photo-container{max-width:300px;margin-bottom:24px}
-  .arch-photo-inner{height:380px}
-  .arch-card-right{padding:42px 18px 30px;border-radius:160px 160px 20px 20px}
-  .arch-card-right::before{border-radius:154px 154px 16px 16px}
-  .countdown-grid{max-width:320px;gap:6px}.countdown-num{font-size:1.4rem}
-  .inv-section-card{padding:35px 20px}
+  .hero-banner-card{padding:22px 16px;max-width:440px;margin:0 auto;border-radius:22px}
+  .arch-photo-container{max-width:180px;margin:0 auto 12px;border-radius:100px 100px 14px 14px;padding:4px}
+  .arch-photo-inner{height:190px;border-radius:96px 96px 10px 10px;background-position:center 20%!important}
+  .arch-card-right{border:0;background:transparent;box-shadow:none;padding:6px 0 0;border-radius:0}
+  .arch-card-right::before{display:none}
+  .countdown-grid{max-width:280px;gap:5px;margin-bottom:12px}.countdown-num{font-size:1.2rem}
+  .guest-callout-box{max-width:280px;padding:7px 12px;margin-bottom:14px}
+  .inv-section-card{padding:30px 18px}
 }
 @media(max-width:576px){
-  .hero-banner-card{padding:24px 14px;border-radius:20px}
-  .arch-photo-container{max-width:260px}
-  .arch-photo-inner{height:320px;border-radius:150px 150px 10px 10px}
-  .arch-card-right{padding:34px 14px 24px;border-radius:130px 130px 16px 16px}
-  .arch-card-right::before{border-radius:124px 124px 12px 12px;inset:5px}
-  .countdown-grid{max-width:290px;gap:5px}.countdown-num{font-size:1.25rem}.countdown-lbl{font-size:.6rem;letter-spacing:1px}
-  .btn-gold-cta{padding:12px 28px;font-size:.82rem;width:100%;max-width:270px;justify-content:center}
-  .royal-dock{width:calc(100% - 20px);padding:6px 4px}
-  .dock-item{font-size:.56rem;padding:4px 3px}.dock-item i{font-size:1.05rem}
-  .inv-section-card{padding:28px 14px;border-radius:18px;margin-bottom:25px}
-  .sec-title h2{font-size:2.8rem}
+  #openingCover{padding:12px 10px}
+  .hero-banner-card{padding:18px 12px;border-radius:18px;max-width:390px}
+  .arch-photo-container{max-width:150px;margin-bottom:8px;border-radius:85px 85px 12px 12px;padding:3px}
+  .arch-photo-inner{height:165px;border-radius:82px 82px 8px 8px}
+  .wedding-subtitle{font-size:.72rem;letter-spacing:3px;margin-bottom:2px}
+  .cn-name{font-size:2.35rem}
+  .wedding-date-hero{font-size:.88rem;margin-bottom:2px}
+  .wedding-venue-hero{font-size:.82rem;margin-bottom:5px}
+  .wedding-quote-hero{font-size:.8rem;line-height:1.4;margin-bottom:10px}
+  .countdown-grid{max-width:260px;gap:4px;margin-bottom:10px}.countdown-num{font-size:1.1rem}.countdown-lbl{font-size:.56rem;letter-spacing:1px}
+  .guest-callout-box{max-width:260px;padding:6px 10px;margin-bottom:12px}
+  .guest-name{font-size:.98rem}
+  .btn-gold-cta{padding:9px 26px;font-size:.78rem;width:100%;max-width:240px;justify-content:center}
+  .royal-dock{width:calc(100% - 16px);padding:5px 3px;bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+  .dock-item{font-size:.54rem;padding:3px 2px}.dock-item i{font-size:1rem}
+  .inv-section-card{padding:24px 12px;border-radius:16px;margin-bottom:20px}
+  .sec-title h2{font-size:2.6rem}
 }
 @media(prefers-reduced-motion:reduce){
   .cn-name,.music-vinyl-btn.rotating{animation:none}

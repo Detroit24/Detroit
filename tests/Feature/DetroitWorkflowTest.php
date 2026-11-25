@@ -173,7 +173,7 @@ class DetroitWorkflowTest extends TestCase
     }
 
     /**
-     * Test Demo Templates Render (Elegance Wedding & Wedding Rizky Dinda)
+     * Test Demo Templates Render (All 10 Detroit Templates)
      */
     public function test_template_demos_render()
     {
@@ -188,5 +188,37 @@ class DetroitWorkflowTest extends TestCase
         $response2->assertSee('Dinda');
         $response2->assertSee('Sahabat Tercinta');
         $response2->assertSee('Mempelai Bahagia');
+
+        $response3 = $this->get('/demo/khitan-ahmad-fathan?to=Bpk+Haji');
+        $response3->assertStatus(200);
+        $response3->assertSee('Tasyakuran Khitan');
+
+        $response4 = $this->get('/demo/birthday-nayla-8?to=Teman+Sekolah');
+        $response4->assertStatus(200);
+        $response4->assertSee('Happy Birthday');
+
+        $response5 = $this->get('/demo/aqiqah-baby-arka?to=Keluarga+Besar');
+        $response5->assertStatus(200);
+        $response5->assertSee('Tasyakuran Aqiqah');
+
+        $response6 = $this->get('/demo/engagement-rara-fajar?to=Sahabat+Dekat');
+        $response6->assertStatus(200);
+        $response6->assertSee('THE ENGAGEMENT OF');
+
+        $response7 = $this->get('/demo/undangan-pengajian?to=Jamaah+Masjid');
+        $response7->assertStatus(200);
+        $response7->assertSee('UNDANGAN MAJELIS');
+
+        $response8 = $this->get('/demo/royal-classic-gold?to=Bapak+Ibu');
+        $response8->assertStatus(200);
+        $response8->assertSee('THE ROYAL WEDDING OF');
+
+        $response9 = $this->get('/demo/sweet-seventeen-glam?to=Bestie');
+        $response9->assertStatus(200);
+        $response9->assertSee('SWEET SEVENTEEN CELEBRATION');
+
+        $response10 = $this->get('/demo/walimatussafar-haji-umroh?to=Kerabat');
+        $response10->assertStatus(200);
+        $response10->assertSee('WALIMATUSSAFAR');
     }
 }
